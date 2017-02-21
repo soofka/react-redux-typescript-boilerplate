@@ -1,6 +1,6 @@
 {
   "name": "StstSpaBoilerplate",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "StepStone Single Page App Boilerplate",
   "repository": {
     "type": "git",
@@ -58,6 +58,7 @@
     "jest": "^18.1.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-test-renderer": "^15.4.2",
+    "ts-jest": "^18.0.3",
     "ts-loader": "^2.0.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
