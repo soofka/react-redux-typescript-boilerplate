@@ -45,6 +45,7 @@ Tests report will be displayed in console.
 * basic HMR
 
 ##### v0.1.2
+* React-Bootstrap
 * SCSS processing
 
 #### to be added
@@ -58,4 +59,3 @@ Tests report will be displayed in console.
 #### to be considered
 * Redux-Form
 * Redux-Saga
-* React-Bootstrap
