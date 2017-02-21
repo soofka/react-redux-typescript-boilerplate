@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { Link } from 'react-router';
+import { Grid } from 'react-bootstrap';
+
+import Navigation from '../Navigation';
 
 interface IAppProps {}
 
 class App extends React.Component<IAppProps, {}> {
   render() {
     return (
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/foo">Foo</Link>
-        <Link to="/bar">Bar</Link>
+      <Grid>
+        <Navigation />
         {this.props.children}
-      </div>
+      </Grid>
     );
   }
 }

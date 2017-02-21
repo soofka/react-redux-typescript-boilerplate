@@ -1,4 +1,7 @@
-## Setup:
+## Intro
+This is basic application skeleton using React and Redux in TypeScript, still under development. 
+
+## Setup
 #### Installation
 Run
 ```
@@ -26,6 +29,7 @@ Tests report will be displayed in console.
 
 ## Changelist:
 #### v.0.1
+##### v0.1.1
 * React
 * Redux
 * TypeScript
@@ -40,10 +44,13 @@ Tests report will be displayed in console.
 * Webpack Dev Server
 * basic HMR
 
-#### to be added
+##### v0.1.2
 * SCSS processing
+
+#### to be added
 * SCSSLint
 * TSLint
+* JSX-Loader
 * Express
 * IE9 support
 * sophisticated HMR

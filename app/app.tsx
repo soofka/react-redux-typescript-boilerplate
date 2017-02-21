@@ -15,6 +15,7 @@ import messages from './constants/messages';
 import { selectIntl, selectRouting } from './selectors';
 
 import App from './containers/App';
+import Home from './containers/Home';
 import Foo from './containers/Foo';
 import Bar from './containers/Bar';
 
@@ -38,7 +39,7 @@ const render = () => {
       <IntlProvider intlSelector={selectIntl}>
         <Router history={history}>
           <Route path="/" component={App}>
-            <IndexRoute component={App}/>
+            <IndexRoute component={Home}/>
             <Route path="foo" component={Foo}/>
             <Route path="bar" component={Bar}/>
           </Route>

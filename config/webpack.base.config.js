@@ -1,3 +1,17 @@
+
+
+module.exports = {
+	// ...
+	module: {
+		loaders: [
+			// ...
+
+		]
+	},
+
+}
+
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
 module.exports = {
@@ -30,7 +44,17 @@ module.exports = {
 					'babel-loader',
 					'ts-loader'
 				]
+			},
+			{
+				test: /\.scss$/,
+				loader: ExtractTextPlugin.extract('css-loader!sass-loader')
 			}
 		]
-	}
+	},
+	plugins: [
+		new ExtractTextPlugin({
+			filename: 'style.css',
+			allChunks: true
+		})
+	]
 };
