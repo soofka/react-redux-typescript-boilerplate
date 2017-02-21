@@ -51,4 +51,4 @@ Tests report will be displayed in console.
 #### to be considered
 * Redux-Form
 * Redux-Saga
-* whatwg-fetch
+* React-Bootstrap
