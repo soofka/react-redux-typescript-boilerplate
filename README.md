@@ -8,24 +8,39 @@ Run
 npm install
 ```
 Your app is now installed and ready to go.
+
 #### Build
 Run
 ```
 npm run build
 ```
 Result of your build will be in ``build`` directory.
+
 #### Live server
 Run
 ```
 npm start
 ```
 Your live server is available at ``http://localhost:3000/``.
+
 #### Tests
 Run
 ```
 npm run test
 ```
 Tests report will be displayed in console.
+
+#### Linting
+In order to run general linter, use
+```
+npm run lint
+```
+In order to run specific linters, use
+```
+npm run lint:ts
+npm run lint:css
+```
+Linters report will be displayed in console.
 
 ## Changelist:
 #### v.0.1
@@ -48,13 +63,19 @@ Tests report will be displayed in console.
 * React-Bootstrap
 * SCSS processing
 
-#### to be added
-* SCSSLint
+##### v0.1.3
+* Awesome TypeScript Loader
 * TSLint
-* JSX-Loader
+* SCSSLint
+* basic linting rules
+
+#### to be added
 * Express
 * IE9 support
+* absolute import
 * sophisticated HMR
+* sophisticated linting rules
+* source maps
 
 #### to be considered
 * Redux-Form

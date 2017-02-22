@@ -12,9 +12,13 @@
   "author": "soofka",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "webpack --config ./config/webpack.prod.config.js --color -p",
-    "start": "node scripts/server.js",
-    "test": "jest"
+    "build": "webpack --config ./config/webpack.prod.config.js --color --optimize-minimize",
+    "build:dev": "webpack --config ./config/webpack.dev.config.js --color",
+    "lint": "npm run lint:ts && npm run lint:css",
+    "lint:ts": "tslint ./app/**/*.ts* --config ./config/tslintconfig.json",
+    "lint:css": "stylelint ./app/**/*.*css --config ./config/stylelint.config.js",
+    "start": "node ./scripts/server.js",
+    "test": "jest --config ./config/jestconfig.json"
   },
   "dependencies": {
     "immutable": "^3.8.1",
@@ -33,6 +37,7 @@
     "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.35",
     "@types/immutable": "^3.8.7",
     "@types/jest": "^18.1.1",
     "@types/node": "^7.0.5",
@@ -44,6 +49,7 @@
     "@types/redux": "^3.6.0",
     "@types/redux-immutable": "^3.0.33",
     "@types/whatwg-fetch": "0.0.33",
+    "awesome-typescript-loader": "^3.0.7",
     "babel-core": "^6.22.1",
     "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.10",
@@ -63,20 +69,13 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "react-test-renderer": "^15.4.2",
     "sass-loader": "^6.0.2",
+    "stylelint": "^7.9.0",
+    "stylelint-config-standard": "^16.0.0",
     "ts-jest": "^18.0.3",
-    "ts-loader": "^2.0.0",
+    "tslint": "^4.4.2",
+    "tslint-eslint-rules": "^3.4.0",
+    "tslint-react": "^2.4.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
-  },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "tests/.*\\.test\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
   }
 }

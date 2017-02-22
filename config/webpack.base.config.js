@@ -1,16 +1,3 @@
-
-
-module.exports = {
-	// ...
-	module: {
-		loaders: [
-			// ...
-
-		]
-	},
-
-}
-
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
@@ -29,10 +16,9 @@ module.exports = {
 			'node_modules'
 		],
 		extensions: [
-			'.js',
-			'.jsx',
 			'.ts',
-			'.tsx'
+			'.tsx',
+			'.js'
 		]
 	},
 	module: {
@@ -42,7 +28,7 @@ module.exports = {
 				exclude: /node_modules/,
 				loaders: [
 					'babel-loader',
-					'ts-loader'
+					'awesome-typescript-loader?configFileName=config/tsconfig.json'
 				]
 			},
 			{

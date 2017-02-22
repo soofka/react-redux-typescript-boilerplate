@@ -1,0 +1,3 @@
+{
+  "extends": ["tslint:recommended", "tslint-eslint-rules", "tslint-react"]
+}
