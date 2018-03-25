@@ -1,0 +1,42 @@
+exports[`<ApiCallExample /> maps dispatch to props correctly onButtonClick prop 1`] = `
+Array [
+  Object {
+    "type": "GET_DATA",
+  },
+]
+`;
+
+exports[`<ApiCallExample /> maps state to props correctly 1`] = `
+Object {
+  "data": Array [
+    1,
+    2,
+    3,
+  ],
+  "error": false,
+  "loading": false,
+}
+`;
+
+exports[`<ApiCallExample /> render correctly  1`] = `<ApiCallExample />`;
+
+exports[`<ApiCallExample /> render correctly with data 1`] = `
+<ApiCallExample
+  data={
+    Array [
+      1,
+      2,
+      3,
+    ]
+  } />
+`;
+
+exports[`<ApiCallExample /> render correctly with error 1`] = `
+<ApiCallExample
+  error={true} />
+`;
+
+exports[`<ApiCallExample /> render correctly with loading indicator 1`] = `
+<ApiCallExample
+  loading={true} />
+`;

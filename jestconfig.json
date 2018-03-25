@@ -1,0 +1,28 @@
+{
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js"
+  ],
+  "moduleNameMapper": {
+    "\\.(css|scss)$": "identity-obj-proxy"
+  },
+  "transform": {
+    ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+  },
+  "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+  "coveragePathIgnorePatterns": ["node_modules", "__tests__"],
+  "collectCoverageFrom": ["src/**/*.{ts,tsx}", "!src/**/*.d.ts"],
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
+  ],
+  "testRegex": "__tests__/.*\\.test\\.(ts|tsx|js)$",
+  "setupTestFrameworkScriptFile": "<rootDir>/enzyme-react-16-config.js",
+  "globals": {
+    "__TS_CONFIG__": "<rootDir>/tsconfig.json"
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow"/>
+
+    <% if (Array.isArray(htmlWebpackPlugin.options.meta)) { %>
+        <% for (item of htmlWebpackPlugin.options.meta) { %>
+            <meta<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
+        <% } %>
+    <% } %>
+
+    <% if (htmlWebpackPlugin.files.favicon) { %>
+        <link href="<%= htmlWebpackPlugin.files.favicon %>" rel="shortcut icon">
+    <% } %>
+
+    <% for (item of htmlWebpackPlugin.options.links) { %>
+        <% if (typeof item === 'string' || item instanceof String) { item = { href: item, rel: 'stylesheet' } } %>
+            <link<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>>
+    <% } %>
+
+    <% for (key in htmlWebpackPlugin.files.css) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet">
+    <% } %>
+
+  </head>
+  <body>
+
+    <% if (htmlWebpackPlugin.options.unsupportedBrowser) { %>
+        <p class="unsupported-browser">
+            Sorry, your browser is not supported. Please upgrade to the latest version or switch your browser to use this site. See <a href="http://outdatedbrowser.com/">outdatedbrowser.com</a> for options.
+        </p>
+    <% } %>
+
+    <app></app>
+
+    <% for (item of htmlWebpackPlugin.options.scripts) { %>
+        <% if (typeof item === 'string' || item instanceof String) { item = { src: item, type: 'text/javascript' } } %>
+        <script async defer<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script>
+    <% } %>
+
+    <% for (item of htmlWebpackPlugin.options.scripts) { %>
+        <% if (typeof item === 'function' || item instanceof Object) {  %>
+            <script async defer><%= item() %></script>
+        <% } %>
+    <% } %>
+
+    <% for (key in htmlWebpackPlugin.files.chunks) { %>
+        <script src="<%= htmlWebpackPlugin.files.chunks[key].entry %>" type="text/javascript"></script>
+    <% } %>
+
+    <noscript>
+        <p>
+            Please enable JavaScript in your browser to use this site.
+        </p>
+    </noscript>
+
+  </body>
+</html>

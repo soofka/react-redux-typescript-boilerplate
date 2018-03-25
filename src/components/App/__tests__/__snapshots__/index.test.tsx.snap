@@ -1,0 +1,13 @@
+exports[`<App/> renders correctly 1`] = `
+<Switch>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/" />
+  <Route
+    component={[Function]}
+    path="/about" />
+  <Route
+    component={[Function]} />
+</Switch>
+`;

@@ -1,0 +1,5 @@
+exports[`<NotFound/> renders correctly 1`] = `
+<h1>
+  NOT FOUND
+</h1>
+`;

@@ -1,0 +1,5 @@
+exports[`selectors correctly select data 1`] = `"test data"`;
+
+exports[`selectors correctly select error 1`] = `"test error"`;
+
+exports[`selectors correctly selects loading 1`] = `false`;

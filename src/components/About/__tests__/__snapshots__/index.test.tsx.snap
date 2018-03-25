@@ -1,0 +1,5 @@
+exports[`<About/> renders correctly 1`] = `
+<h1>
+  ABOUT
+</h1>
+`;
