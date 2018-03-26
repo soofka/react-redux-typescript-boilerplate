@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const appConfig = require('./appconfig');
 
@@ -219,6 +220,15 @@ const getPlugins = (devEnv, audit, localServer) => {
     plugins.push(
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin()
+    );
+  }
+
+  if (audit) {
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: '../stats/report.html'
+      })
     );
   }
 

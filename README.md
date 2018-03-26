@@ -1,8 +1,13 @@
 # react-redux-typescript-boilerplate
 This is skeleton of React application, coded in TypeScript, using Redux to handle application state. It runs on React in version 16 and TypeScript in version 2.7. It consists of two parts and thus may serve two purposes:
 
-1. Application infrastructure, which includes transpilation from TypeScript to ES6 and to ES5, module bundling, live server, serving application on your localhost with hot module replacement enabled, unit tests runners, code linters, code style configuration etc. It can be used to quickly setup and start coding new project, simply by cloning and removing `/src` directory and some redundant packages from `package.json`.
-2. Application code samples, which display how to write certain common features of web application in TypeScript with React and Redux. This is generally content of `/src` directory. It can be used as an example to learn from, or standard piece of code to duplicate, solving some common problem. So far, it contains general setup of such application, with store, actions and reducers; example of simple routing; example of asynchronous call to external API.  
+1. Application skeleton
+
+    Includes transpilation from TypeScript to ES6 and to ES5, module bundling, live server, hot module replacement enabled, unit tests runners, code linters, bundle analyzer etc. It can be used to quickly setup and start coding new project, simply by cloning and removing `/src` directory and some redundant packages from `package.json`.
+    
+2. React + Redux + TypeScript code samples
+
+    This is generally content of `/src` directory. There are examples of certain features that I stumbled upon commonly in my experience of web development in TypeScript with React and Redux. They can be used as examples to learn from, or standard pieces of code to duplicate, quickly solving some common problem.  
 
 ## Scripts
 
@@ -67,7 +72,7 @@ npm run test:clean
 ```
 Deletes test coverage directory (`/coverage`).
 
-### lint
+### code check
 ```
 npm run lint
 ```
@@ -86,7 +91,12 @@ Runs TSLint, checking `.ts` and `.tsx` files in `/src` directory. Outcome is dis
 ```
 npm run lint:css
 ```
-Runs StyleLint, checking `.*css` files in `/src` directory. Outcome is displayed in terminal. 
+Runs StyleLint, checking `.*css` files in `/src` directory. Outcome is displayed in terminal.
+
+```
+npm run audit
+``` 
+Deletes directory with bundled code and bundles new production version of the application. Generates detailed, visual report, displaying content of resulting bundle with an interactive zoomable treemap. Report is available in `/stats` directory. It is generated with webpack-bundle-analyzer plugin.
 
 ### misc
 ```
@@ -100,6 +110,10 @@ npm run check-version
 Checks if current version of Node satisfies requirement stated in `package.json`, displays message in terminal if not. This command is part of `postinstall` process.
 
 ## Changelog:
+#### v.1.1.0
+Added:
+* Webpack Bundle Analyzer
+
 #### v.1.0.0
 Added:
 * React 16

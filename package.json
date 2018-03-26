@@ -1,6 +1,6 @@
 {
   "name": "react-redux-typescript-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react-redux-typescript-boilerplate",
   "keywords": [
     "react",
@@ -36,11 +36,12 @@
     "test:update": "npm run test -- --updateSnapshot",
     "test:watch": "npm run test -- --watch",
     "test:clean": "rimraf ./coverage",
+    "audit": "npm run build:clean && cross-env environment=prod mode=audit npm run build:base",
     "lint": "npm run lint:ts && npm run lint:css",
     "lint:js": "eslint ./scripts/**/*.js",
     "lint:ts": "tslint ./src/**/*.{ts,tsx} --config ./tslintconfig.json",
     "lint:css": "stylelint ./src/**/*.*css",
-	"clean": "npm run build:clean && npm run test:clean",
+    "clean": "npm run build:clean && npm run test:clean",
     "check-version": "node ./scripts/package/checkVersion.js",
     "postinstall": "npm run check-version"
   },
@@ -73,7 +74,6 @@
     "babel-preset-stage-3": "^6.24.1",
     "body-parser": "^1.18.2",
     "compression-webpack-plugin": "^0.4.0",
-    "cookie-parser": "^1.4.3",
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.10",
     "enzyme": "^3.3.0",
@@ -101,6 +101,7 @@
     "tslint-loader": "^3.6.0",
     "typescript": "^2.7.1",
     "webpack": "^4.1.1",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.10",
     "webpack-dev-middleware": "^3.0.1",
     "webpack-hot-middleware": "^2.21.2"
