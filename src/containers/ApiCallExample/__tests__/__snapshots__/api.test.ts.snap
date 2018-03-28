@@ -1,11 +1,6 @@
 exports[`ApiCallExample API calls and handles fetchData result correctly 1`] = `
 Array [
-  "/api/get-data",
-]
-`;
-
-exports[`ApiCallExample API calls and handles fetchData result correctly 2`] = `
-Array [
   2,
+  4,
 ]
 `;

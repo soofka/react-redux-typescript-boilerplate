@@ -1,21 +1,20 @@
-const testData = [1,2,3];
+import axios from 'axios';
+import axiosMockAdapter from 'axios-mock-adapter';
 
-const axiosGetMock = jest.fn(() => ({
-  then: (f) => f({ data: testData })
-}));
+import { dataApiBaseUrl } from 'common/constants';
 
-jest.mock('axios', () => ({
-  default: { get: axiosGetMock },
-}));
+const testData = [1,2,3,4,5];
+const axiosMock = new axiosMockAdapter(axios);
+axiosMock.onGet(dataApiBaseUrl).reply(200, testData);
 
 import { fetchData } from '../api';
 
 describe('ApiCallExample API', () => {
 
   it('calls and handles fetchData result correctly', () => {
-    const result = fetchData();
-    expect(axiosGetMock.mock.calls[0]).toMatchSnapshot();
-    expect(result).toMatchSnapshot();
+    return fetchData().then((result) => {
+      expect(result).toMatchSnapshot();
+    });
   });
 
 });

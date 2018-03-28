@@ -1,8 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
-const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const appConfig = require('./appconfig');
@@ -120,21 +122,15 @@ const getModule = (devEnv) => {
     },
   }];
 
-  const imageLoaders = ['file-loader'];
+  const imageLoaders = [{
+    loader: 'file-loader',
+    options: {
+      name: 'assets/images/[name].[ext]?[hash]',
+    },
+  }];
 
   if (!devEnv) {
-    imageLoaders.push({
-      loader: 'image-webpack-loader',
-      query: {
-        progressive: true,
-        optimizationLevel: 7,
-        interlaced: false,
-        pngquant: {
-          quality: '65-90',
-          speed: 4,
-        },
-      },
-    });
+    imageLoaders.push('image-webpack-loader');
   }
 
   return {
@@ -152,7 +148,7 @@ const getModule = (devEnv) => {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: fontLoaders,
       }, {
-        test: /\.(gif|png|jpe?g|svg)$/,
+        test: /\.(gif|ico|jpe?g|png|svg)$/,
         loaders: imageLoaders,
       },
     ],
@@ -170,12 +166,39 @@ const getPlugins = (devEnv, audit, localServer) => {
       }
     }),
     new ExtractTextWebpackPlugin({
-      filename: `styles/style.[${hashSetting}].css`,
+      filename: `assets/styles/style.[${hashSetting}].css`,
       allChunks: true,
+    }),
+    new CopyWebpackPlugin([{ from: './src/assets/static/', to: './assets/'}]),
+    new HtmlWebpackPlugin({
+      template: './src/index.ejs',
+      favicon: './src/assets/favicon.ico',
+      title: appConfig.title,
+      meta: appConfig.meta,
+      inject: false,
+      mobile: true,
+      unsupportedBrowser: false,
+      links: [],
+      scripts: [],
+      minify: devEnv ? false : {
+        collapseBooleanAttributes: true,
+        collapseInlineTagWhitespace: true,
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        minifyCSS: true,
+        minifyJS: true,
+        minifyURLs: true,
+        removeComments: true,
+      },
     }),
   ];
 
-  if (!devEnv) {
+  if (devEnv) {
+    plugins.push(
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin()
+    );
+  } else {
     plugins.push(
       new webpack.LoaderOptionsPlugin({
         minimize: true,
@@ -187,39 +210,10 @@ const getPlugins = (devEnv, audit, localServer) => {
         test: /\.js$|\.css$|\.html$/,
         threshold: 10240,
         minRatio: 0.8,
-      })
-    );
-  }
-
-  plugins.push(
-    new HtmlWebpackPlugin({
-      inject: false,
-      template: './src/index.ejs',
-      title: appConfig.title,
-      mobile: true,
-      unsupportedBrowser: false,
-      meta: appConfig.meta,
-      favicon: appConfig.favicon,
-      manifest: '/manifest.json',
-      links: [],
-      scripts: [],
-      minify: devEnv ? false : {
-        collapseBooleanAttributes: true,
-        collapseInlineTagWhitespace: true,
-        collapseWhitespace: true,
-        keepClosingSlash: true,
-        minifyCSS: true,
-        minifyJS: true,
-        minifyURLs: true,
-        removeComments: true
-      },
-    })
-  );
-
-  if (devEnv) {
-    plugins.push(
-      new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin()
+      }),
+      new ImageminPlugin({
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+      }),
     );
   }
 

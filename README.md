@@ -113,6 +113,8 @@ Checks if current version of Node satisfies requirement stated in `package.json`
 #### v.1.1.0
 Added:
 * Webpack Bundle Analyzer
+* Axios Mock Adapter
+* copying static content as a step in build process
 
 #### v.1.0.0
 Added:
@@ -168,6 +170,5 @@ Added:
 #### to do
 - fix HMR
 - fix `hashSetting` variable in webpack config
-- add audit mode (webpack visualizer plugin)
 - add IDE support for absolute imports
 - add source maps

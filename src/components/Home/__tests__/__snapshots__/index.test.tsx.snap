@@ -3,6 +3,8 @@ exports[`<Home/> renders correctly 1`] = `
   <h1>
     HOME
   </h1>
+  <img
+    src="/assets/images/flower.jpg" />
   <h3>
     API call example:
   </h3>
