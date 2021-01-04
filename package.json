@@ -46,7 +46,7 @@
     "postinstall": "npm run check-version"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
